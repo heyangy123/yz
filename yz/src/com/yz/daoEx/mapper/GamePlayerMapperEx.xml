@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.daoEx.GamePlayerMapperEx" >
+	<resultMap id="BaseResultMap" type="com.yz.daoEx.model.GamePlayerEx" extends="com.yz.dao.GamePlayerMapper.BaseResultMap">
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectCaptain" parameterType="Map" resultMap="BaseResultMap">
+		SELECT
+			u1.name,u1.img,u1.type
+		FROM
+			(
+				SELECT
+					u.*,gp.type
+				FROM
+					f_game_player gp LEFT JOIN f_user u on gp.user_id = u.id 
+		where 1=1
+				AND gp.is_captain = 1
+				AND gp.type = #{type}
+				AND gp.game_id = #{gameId}
+			) u1  
+	</select>
+	
+  <select id="selectByGameId" resultMap="BaseResultMap" >
+    select
+     a.id, a.game_id, a.user_id, a.is_captain, a.goal, a.assists, a.rebounds, a.steals, a.block, a.type, a.create_time
+    ,u.name as userName
+    from f_game_player a
+    left join f_user u on u.id=a.user_id
+    where game_id=#{gameId, jdbcType=VARCHAR}
+    <if test="type != null" >
+        and type=#{type,jdbcType=INTEGER}
+    </if>
+    order by is_captain desc
+  </select>
+	
+</mapper>

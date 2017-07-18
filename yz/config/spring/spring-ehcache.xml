@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd  
+    http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd
+    http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.1.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+    <cache:annotation-driven cache-manager="cacheManager"/>
+    <!-- 配置eh缓存管理器 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cacheManager-ref="ehcache"/>
+	
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:configLocation="classpath:/spring/ehcache.xml" p:shared="true" />
+		
+	<!-- 框架缓存 -->
+	<bean id="frameCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="ehcache" />
+		<property name="cacheName" value="frameCache" />
+	</bean>
+	
+	<!-- 手机验证码缓存 -->
+	<bean id="mobileCodeCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="ehcache" />
+		<property name="cacheName" value="mobileCodeCache" />
+	</bean>
+	
+	<!-- service缓存 -->
+	<bean id="serviceCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="ehcache" />
+		<property name="cacheName" value="serviceCache" />
+	</bean>
+	
+	<!-- item缓存 -->
+	<bean id="itemCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="ehcache" />
+		<property name="cacheName" value="itemCache" />
+	</bean>
+</beans>

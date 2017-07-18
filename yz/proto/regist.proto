@@ -1,0 +1,123 @@
+package com.eone.common.proto;
+option java_outer_classname = "MUserAccount";
+
+message MAccount {
+	optional string id = 1;	   //id
+	optional string verify = 2;  //登陆校验码
+}
+
+message MUser {
+	optional string name = 1;// 姓名
+	optional int32 score = 2;// 积分
+	optional string img = 3; //头像
+	optional int32 rank = 4; //个人排名
+	optional string role = 5; //角色表
+	optional int32 goal = 6; //得分
+	optional int32 assists = 7;//助攻
+	optional int32 rebounds = 8;//篮板
+	optional int32 steals = 9;//抢断
+	optional int32 block = 10; //封盖 
+	optional int32 sex = 11; //性别 性别（0：女，1：男）
+	optional string birthday = 12;//生日
+	optional double height = 13;//身高
+	optional double weight = 14;// 体重
+	optional string address = 15;// 所在地
+	optional string tel = 16; //手机号
+	optional string position = 17; //位置
+	optional string id = 18;
+	optional string newMsg = 19;//是否有新消息（0：没有，1：有）
+
+}
+
+message MUserList{
+	repeated MUser user = 1; 
+}
+
+/**
+@api MGetUserInfo MGetUserInfo	//获取用户信息
+@param required string id //用户id
+@return MUser
+*/
+
+/**
+@api MGetMobileMsg MGetMobileMsg	//获取验证码
+@param required string phone //手机号
+@param required string type //1:注册 2:忘记密码
+@return MRet
+*/
+
+/**
+@api MCheckMobileMsg MCheckMobileMsg	//验证验证码
+@param required string phone //手机号
+@param required string code //验证码
+@return MRet
+*/
+
+/**
+@api MRegist MRegist	//注册
+@param required string nickName //昵称
+@param required string phone //手机号
+@param required string code //短信验证码
+@param required string password //密码(需要加密)
+@param required string device //设备类型  android或ios
+@param optional string address // 所在地
+@param optional string sex // 性别
+@return MAccount
+*/
+
+/**
+@api MLogin MLogin	//登录
+@param required string phone //手机号
+@param required string password //密码(需要加密)
+@param required string device //设备类型  android或ios
+@param optional string cid //个推cid
+@return MAccount
+*/
+
+/**
+@api MOauthLogin MOauthLogin	//第三方登录
+@param required string type //1:qq 2:sina
+@param required string openid //openid
+@param required string accessToken //accessToken
+@param required string device //设备类型  android或ios
+@param optional string cid //个推cid
+@return MAccount
+*/
+
+/**
+@api MUpdateUser MUpdateUser	//完善用户资料(需要登录)
+@param optional string nickName //名称
+@param optional string headImg //头像
+@param optional string sex //性别
+@return MUser
+*/
+
+/**
+@api MForgetPassword MForgetPassword	//忘记密码 
+@param required string phone //手机号
+@param required string code //短信验证码
+@param required string password //新密码(需要加密)
+@param required string device //设备类型  android或ios
+@param optional string cid //个推cid
+@return MAccount
+*/
+
+/**
+@api MChangePassword MChangePassword	//修改密码(需要登录)
+@param required string oldPwd //旧密码(需要加密)
+@param required string newPwd //新密码(需要加密)
+@return MRet
+*/
+
+/**
+@api MLogout MLogout	//注销(需要登录)
+@return MRet
+*/
+
+/**
+@api MBindPhone MBindPhone	//绑定手机(需要登录)
+@param required string phone //手机号
+@param required string code //短信验证码
+@param optional string password //密码
+@return MRet
+*/

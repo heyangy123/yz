@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.daoEx.SocialMapperEx" >
+	<resultMap id="BaseResultMap" type="com.yz.daoEx.model.SocialEx" extends="com.yz.dao.SocialMapper.BaseResultMap">
+	</resultMap>
+	
+	<select id="selectAppList" parameterType="map" resultMap="BaseResultMap">
+		SELECT
+			s.*, u. NAME AS nickName, u.img as logo,u.id as userId
+		FROM
+			f_social s
+		LEFT JOIN f_user u ON s.user_id = u.id
+		
+		<if test=" userId !=null and userId != ''">
+			where s.user_id = #{userId}
+		</if>
+		
+		order by s.create_time desc
+		
+	</select>
+	
+</mapper>

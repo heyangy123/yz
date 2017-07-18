@@ -1,0 +1,55 @@
+@charset "gb2312";
+/* CSS Document */
+#iheader .iheader_city {font-size:16px;}
+#iheader .iheader_city a{font-size:16px;}
+
+
+
+
+
+.index_row1 dl dd{font-size:15px;line-height:20px;}
+.index_row1 dl dd a{font-size:15px;line-height:20px;}
+
+
+.index_row1_gg{padding:0 20px;font-size:15px;line-height:35px;}
+.index_row1_gg h2{padding:5px 0 5px 20px;font-size:15px;line-height:35px;height:35px;background-size:16px;}
+.index_row1_gg h2 span{margin:0 6px 0 2px;font-size:15px;line-height:35px;}
+.index_row1_gg h2 a{color:#444444;font-size:15px;}
+
+
+
+.index_row2{margin-top:10px;}
+.index_row2_l dl dt a{font-size:18px;line-height:30px;}
+.index_row2_l dt em img{width:28px;}
+
+
+.index_row3 span{position:absolute;left:10px;bottom:3px;font-size:14px;}
+
+
+.line_04{margin:10px 0 5px 0;}
+.line_04 span{
+   
+   font-size:20px;
+}
+
+.index_ipro{padding:5px 0 6px 0;}
+
+.ipro_list{margin-bottom:10px;}
+.ipro_list h3 {font-size:14px;line-height:25px;padding:0 6px;}	
+.ipro_list h3 a{font-size:14px;line-height:25px;}	
+.ipro_list h4 {font-size:17px;line-height:25px;padding:0 3px;}	
+
+
+
+.index_row13_title{margin-top:10px;}
+.index_row13_title h2{float:left;font-size:19px;color:#f7585d;font-family: 'Microsoft Yahei';font-weight:normal;line-height:40px;padding:0 0 0 6px;}
+.seckill-timer{padding:3px;margin-top:9px;}
+.index_row3_pro{margin-top:0;}
+.index_row3_pro dl dt span{right:12px;bottom:3px;height:20px;line-height:20px;padding:0 8px;-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;font-size:12px;}
+
+
+.index_row3_pro dl dd{font-size:14px;height:25px;line-height:25px;}
+.index_row3_pro dl dd a{font-size:14px;height:25px;line-height:25px;}
+

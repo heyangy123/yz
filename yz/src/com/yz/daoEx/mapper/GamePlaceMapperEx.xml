@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.daoEx.GamePlaceMapperEx" >
+	<resultMap id="BaseResultMap" type="com.yz.daoEx.model.GamePlaceEx" extends="com.yz.dao.GamePlaceMapper.BaseResultMap">
+	    <result column="city" property="city" jdbcType="VARCHAR" />
+    	<result column="province" property="province" jdbcType="VARCHAR" />
+    	<result column="province_code" property="provinceCode" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectList" resultMap="BaseResultMap" >
+		SELECT
+		  	p.id, p.address, p.city_code, p.place, p.lng, p.lat, p.img, p.create_time
+			,c.city,pv.province,pv.province_code
+		FROM f_game_place p
+		LEFT JOIN b_cities c ON c.city_code=p.city_code
+		LEFT JOIN b_provinces pv ON pv.province_code=c.province_code
+		ORDER BY p.city_code,p.create_time ASC
+	</select>
+	
+  <select id="selectByPlaceId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    p.id, p.address, p.city_code, p.place, p.lng, p.lat, p.img, p.create_time
+	,c.city,pv.province,pv.province_code
+    from f_game_place p
+    LEFT JOIN b_cities c ON c.city_code=p.city_code
+	LEFT JOIN b_provinces pv ON pv.province_code=c.province_code
+    where p.id = #{id,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

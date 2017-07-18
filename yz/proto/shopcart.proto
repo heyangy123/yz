@@ -1,0 +1,29 @@
+package com.eone.common.proto;
+option java_outer_classname = "MShopCart";
+
+message MGoods {
+	optional string title = 1; //标题
+	optional int32  credit = 2;//所需积分
+	optional string img = 3; //图片
+	optional string id = 4; //id
+	optional string info = 5; //详情
+	optional int32 stock = 6; //库存
+}
+
+message MExchangeLog{
+	optional string title = 1;//标题
+	optional int32  credit = 2;//积分
+	optional string img = 3; //图片
+	optional int32 state = 4; //兑换状态 （0:待审核,1:兑换成功）
+	optional string time = 5; //兑换时间
+}
+
+message MExchangeLogList{
+	repeated MExchangeLog exchangeLog = 1;
+}
+
+message MGoodsList{
+	repeated MGoods goods = 1; 
+}
+
+

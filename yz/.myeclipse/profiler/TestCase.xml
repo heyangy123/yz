@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="app_preset_prof_preset_name">TestCase Launch Configuration</entry>
+<entry key="app_preset_prof_preset_filter_s"/>
+<entry key="app_preset_prof_preset_filter_p">autoCode.action.*,
+autoCode.daoEx.*,
+com.chat.dao.*,
+com.chat.mobile.*,
+com.chat.service.*,
+com.cxs.action.*,
+com.cxs.dao.*,
+com.cxs.mobile.*,
+com.cxs.service.*,
+com.fx.action.*,
+com.fx.dao.*,
+com.fx.mobile.*,
+com.fx.service.*,
+com.h5.pay.ali.sign.*,
+com.h5.pay.ali.util.*,
+com.h5.util.*,
+com.h5.view.*,
+com.h5.wx.*,
+com.item.*,
+com.shopcart.action.*,
+com.shopcart.dao.*,
+com.shopcart.mobile.*,
+com.shopcart.service.*,
+com.shopcart.util.*,
+com.social.action.*,
+com.social.dao.*,
+com.social.mobile.*,
+com.social.service.*,
+com.website.util.*,
+com.weixin.*,
+run.*,
+test.*</entry>
+<entry key="app_preset_prof_preset_alloc_p">10</entry>
+<entry key="app_preset_"/>
+<entry key="app_preset_prof_preset_samplingRefreshRate_s">1000</entry>
+<entry key="app_preset_prof_preset_stacks_p">false</entry>
+<entry key="app_preset_prof_preset_roots_p">autoCode.action.**
+autoCode.daoEx.**
+com.chat.dao.**
+com.chat.mobile.**
+com.chat.service.**
+com.cxs.action.**
+com.cxs.dao.**
+com.cxs.mobile.**
+com.cxs.service.**
+com.fx.action.**
+com.fx.dao.**
+com.fx.mobile.**
+com.fx.service.**
+com.h5.pay.ali.sign.**
+com.h5.pay.ali.util.**
+com.h5.util.**
+com.h5.view.**
+com.h5.wx.**
+com.item.**
+com.shopcart.action.**
+com.shopcart.dao.**
+com.shopcart.mobile.**
+com.shopcart.service.**
+com.shopcart.util.**
+com.social.action.**
+com.social.dao.**
+com.social.mobile.**
+com.social.service.**
+com.website.util.**
+com.weixin.**
+run.**
+test.**
+</entry>
+<entry key="profiler.settings.instrument.empty.methods">false</entry>
+<entry key="myeclipse.profiling.mode">0</entry>
+<entry key="profiler.settings.istrument.getter.setter.methods">false</entry>
+<entry key="app_preset_prof_preset_samplingRate_s">100</entry>
+<entry key="app_preset_prof_preset_filterMode_s">true</entry>
+<entry key="app_preset_prof_preset_selector"/>
+<entry key="app_preset_prof_preset_refreshRate_s">1000</entry>
+<entry key="app_preset_prof_preset_runnables_p">true</entry>
+<entry key="app_preset_prof_preset_filterMode_p">false</entry>
+<entry key="app_preset_prof_preset_memoryMode_p">true</entry>
+</properties>

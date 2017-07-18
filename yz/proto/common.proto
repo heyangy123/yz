@@ -1,0 +1,133 @@
+package com.eone.common.proto;
+option java_outer_classname = "MCommon";
+
+message MRet {
+	optional int32 code = 1; //返回类型
+	optional string msg = 2; //返回值
+}
+
+message MFet {
+	optional int32 code = 1; //返回类型
+	optional string msg = 2; //返回值
+	optional string friendId = 3; //好友id
+}
+
+message MFile {
+	required bytes file = 1;	//文件
+	optional string fileName = 2; //文件名
+}
+
+message MArea{
+	optional string code = 1;//代码
+	optional string name = 2; //名字
+}
+
+message MAreaList{
+	repeated MArea list = 1;
+}
+
+message MFileList {
+	repeated MFile file = 1;
+}
+
+message MAbout{
+	optional string content = 1; //内容
+	optional string remark = 2; //备注
+}
+
+message MAboutList{
+	repeated MAbout mAbout = 1; //内容
+}
+
+message MSysParams {
+	optional string param1 = 1;	   	//欢迎页
+	optional string param2 = 2;  	//
+	optional string param3 = 3;  	//
+	optional string param4 = 4;  	//
+	optional string param5 = 5;		//
+	optional string param6 = 6;		//
+	optional string param7 = 7;		//
+	optional string param8 = 8;		//
+	optional string param9 = 9;		//
+	optional string param10 = 10;	//
+}
+
+message MNotifyList {
+	repeated MNotify notify = 1;
+}
+
+message MNotify {
+	optional string id = 1;	   //id
+	optional string title = 2;  //标题
+	optional string content = 3;  //内容
+	optional int32 isRead = 4;  //是否已读 0:否 1:是
+	optional string createTime = 5;  //创建时间
+	optional int32 redirectType = 6;  //0:好友消息 1:其他消息
+	optional string redirectContent = 7;  //跳转内容 id,url等
+	optional string userId = 8;  //用户id
+	optional int32 state = 9; //0:待审核 1:同意 2:拒绝
+	optional string friendId = 10; //好友id
+}
+
+
+/**
+@api MUploadFile MUploadFile  //上传文件(需要登录)
+@param required MFileList files //文件
+@return MRet
+*/
+
+/**
+@api MFeedback MFeedback	//用户反馈
+@param required string content //内容
+@return MRet
+*/
+
+/**
+@api MSysParams MSysParams	//获取系统常量
+@return MSysParams
+*/
+
+/**
+@api MSysParamByCode MSysParamByCode	//获取单个系统常量
+@param required string code
+@return MRet
+*/
+
+/**
+@api MNotifyList MNotifyList	//消息列表(需要登录,分页)
+@return MNotifyList
+*/
+
+/**
+@api MNotify MNotify	//消息详情(需要登录)
+@param required string notifyId
+@return MNotify
+*/
+
+/**
+@api MDelNotify MDelNotify	//删除消息(需要登录)
+@param required string notifyId	
+@return MRet
+*/
+
+
+/**
+@api MSinglePage MSinglePage	// 关于我们
+@param required string code  // about 
+@return MAboutList
+*/
+
+
+/**
+@api MAddFriend MAddFriend	// 添加好友申请
+@param required string friendId  //好友的用户id 
+@return MFet
+*/
+
+/**
+@api MAcceptFriend MAcceptFriend	// 同意/拒绝添加好友
+@param required string friendId  //好友的用户id
+@param required string state  //1:同意 2:拒绝
+@param required string notifyId  //消息id
+@return MRet
+*/

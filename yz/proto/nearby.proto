@@ -1,0 +1,61 @@
+package com.eone.common.proto;
+option java_outer_classname = "MNearby";
+
+
+message MComment{
+	optional string content = 1;//评论内容
+	optional string critic = 2; // 评论人id
+	optional string name = 3; //评论人名字
+	optional string replayName = 4;//回复人
+	optional string target = 5;//回复人id
+	optional string id = 6;
+}
+
+message MTalk {
+	required string id = 1; //id
+	required string content = 2; //内容
+	optional string img = 3; // 图片 逗号拼接
+	optional string time = 4; //创建时间
+	optional string userName = 5; //用户名
+	optional string logo = 6; //头像
+
+
+}
+
+message MText{
+	optional MCommentList mCommentList =1;
+	optional MUpvoteList mUpvoteList = 2;
+}
+
+message MTalkList {
+	repeated MTalk list = 1;
+} 
+
+message MCommentList {
+	repeated MComment list = 1;
+} 
+
+message Mvedio {
+	optional string title = 1; //标题
+	optional string img = 2; //图片
+	optional string time = 3; //时间
+	optional string remark = 4;//备注
+	optional string id = 5;//
+	optional string address = 6;//比赛地址
+	optional string url = 7;
+	optional string vedioTime = 8;//视频时长
+}
+
+message MvedioList {
+	repeated Mvedio list =1; 
+}
+
+message MUpvote {
+	optional string name = 1; //点赞人
+	optional string id = 2;
+}
+
+message MUpvoteList {
+	repeated MUpvote list = 1; 
+}
+

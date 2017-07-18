@@ -1,0 +1,13 @@
+
+.navbox .uboxstyle .select_box{width:318px;height:28px; float:left; 
+border:1px solid #D2D2D2; position:relative;  margin-top:10px;  }
+.navbox .uboxstyle div.tag_select{display:block;color:#929292;height:28px;background:url(../images/select_kx.png) 93% no-repeat;padding:0 10px;line-height:28px; font-size:16px;}
+.navbox .uboxstyle div.tag_select_hover{display:block;color:#929292;height:28px;background:url(../images/select_kx.png) 93% no-repeat;padding:0 10px;line-height:28px; font-size:16px;}
+.navbox .uboxstyle div.tag_select_open{display:block;color:#444;height:28px;background:url(../images/select_kx.png) 93% no-repeat;padding:0 10px;line-height:28px; font-size:16px;}
+.navbox .uboxstyle .tag_options{ width:318px; background:#fff;
+border:1px solid #d2d2d2; left:-1px;}
+.navbox .uboxstyle .tag_options li{ font-size:15px; padding:0 10px; line-height:26px;}
+.navbox .uboxstyle .tag_options li.open_hover{ background:#f0f0f0;}
+
+.breakRule .uboxstyle .select_box{width:148px;margin-right:10px; margin-top:0px;}
+.breakRule .uboxstyle .tag_options{width:148px;}

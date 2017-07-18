@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.item.daoEx.FocusMapperEx" >
+  <resultMap id="BaseResultMap" type="com.item.daoEx.model.FocusEx" extends="com.item.dao.FocusMapper.BaseResultMap">
+  	<result column="areaName" property="areaName" /> 
+  </resultMap>
+  <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select
+    	f.*,ci.name as areaName
+    from b_focus f
+    left join fx_city ci on ci.code = f.area_code 
+    where f.location = #{location}
+    <if test="flag == null and areaCode != null">and f.area_code = #{areaCode}</if>
+    <if test="flag != null and areaCode != null">and f.area_code in(#{areaCode},'0')</if>
+    order by f.location,f.sort_order desc
+  </select>
+</mapper>

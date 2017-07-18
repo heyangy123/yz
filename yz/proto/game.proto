@@ -1,0 +1,274 @@
+package com.eone.common.proto;
+option java_outer_classname = "MMatch";
+
+message MGame{ //比赛
+	optional string id = 1; // id
+	optional string	name = 2; //比赛名称
+	optional string organizer = 3; //组织者
+	optional string address = 4; //场地
+	optional string createTime = 5;//预约比赛时间
+	optional MMemberList memberList = 6; //  参加的队员
+	optional string img = 7; //组织者头像
+	optional int32 state = 8; //比赛状态  0:待审核 1:待应战 2:约战中 3:已近约战 
+
+}
+
+message MGameDetail{  //比赛详情
+	optional string createTime = 1;//时间
+	optional string address = 2;// 地点
+	optional string place = 3; //场地
+	optional string type = 4;//类型
+	optional int32 number = 5;//参数人数
+	optional MMemberList list = 6; //参赛人员
+	optional string them = 7; // 比赛主题
+	optional string remark = 8; //比赛介绍
+	optional string organizer_img = 9; //组织者头像
+	optional string accept_img = 10; //应战者头像
+	optional double amount = 11; //比赛金额
+	optional string id = 12; //id
+}
+
+message MGameAddress { //比赛地址
+	optional string name = 1;//球场名
+	optional string address = 2; // 球场地址
+	optional string id = 3;
+}
+
+message MFriend { //朋友
+	optional string id = 1;//id
+	optional string name = 2;//姓名
+	optional int32 sex = 3; //性别
+	optional string img = 4; //头像
+}
+
+message MFriendList{ //朋友列表
+	repeated MFriend list  = 1;
+}
+
+message MGameAddressList{ //比赛地址列表
+	repeated MGameAddress gameAddress = 1;
+}
+
+message MGameType{ //比赛类型
+	optional string name = 1;//类型名
+	optional int32 rank = 2; //排序
+	optional int32 state = 3; //是否可用 1:可用 0:不可用
+	optional int32 num = 4; // 比赛人数 
+	optional string id = 5; 
+	optional string amount = 6; // 比赛费用 
+}
+
+message MMember{ //队员
+	optional string name = 1;//队员名
+	optional string img = 2;//队员头像
+	optional string id = 3; 
+	optional int32 type = 4;
+}
+
+message MMemberList{ //队员列表
+	repeated MMember member = 1;//队员名
+}
+
+
+message MGameList{ //对战列表
+	repeated MGame game = 1;
+}
+ 
+message MGameTypeList{ //对战类型列表
+	repeated MGameType gameType = 1;
+}
+
+message MBanner{  //轮播图
+	optional string title = 1; //图片名
+	optional string jump_url = 2; //跳转地址 
+	optional string img = 3; // 图片
+	optional int32 type = 4; //类型
+}
+
+message MBannerList{ //轮播图列表
+	repeated MBanner banner = 1;  
+}
+
+message MCity {
+	optional string code = 1;//代码
+	optional string name = 2; //内容
+}
+
+message MCityList{
+	repeated MCity list = 1;
+}
+
+/**
+@api MBannerList MBannerList //轮播图列表
+@param required required type //  轮播图类型（1：约战  2:发现 3:篮球圈  4:商城）
+@return MBannerList
+*/
+
+/**
+@api MGameList MGameList //对战列表
+@param required string areaCode //城市 id
+@param required string state //比赛状态 0:待审核 1:待应战 2:约战中 3:已近约战
+@param required string type //比赛类型id 1:1v1 3:3v3 4:4v4 5:5v5
+@param required string time //按照时间筛选 1:一周内 2:三周内 3:一个月内 4:三个月内
+@param required string name //比赛主题 比赛地点 比赛场地
+@return MGameList
+*/
+
+/**
+@api MCityList MCityList //城市列表
+@param required string type //  1 省   2市  3区    默认不传   type和code 为 省
+@param required string code  //代码
+@return MCityList
+*/
+
+/**
+@api MGameDetail MGameDetail //对战详情      (需要登录)
+@param required string gameId //比赛id
+@return MGame
+*/
+
+/**
+@api MGameTypeList MGameTypeList //比赛类型列表  
+@return MGameTypeList
+*/
+
+/**
+@api MFriendList MFriendList // 好友列表
+@return MFriendList 
+*/
+
+
+/**
+@api MSearchUser MSearchUser  // 搜索好友
+@param required string word //名字或者id 必须传一个
+@return MFriendList 
+*/
+
+/**
+@api MAddGame MAddGame  //发布约战
+@param required string userId  //组织者id
+@param required string playerId   //参赛人员 逗号拼接  
+@param required string tel  //电话
+@param required string theme   //主题
+@param required string typeId   //比赛类型id  需要自行判断是否
+@param required string time     //比赛时间
+@param required string placeId   //比赛场地
+@param required string remark   //比赛介绍
+@param required double amount   //比赛费用
+@return MRet 
+*/
+
+/**
+@api MAcceptGame MAcceptGame // 应战
+@param required string gameId  //比赛id
+@param required string playerId // 参赛人员 逗号拼接
+@param required double amount //比赛金额
+@return MRet 
+*/
+
+/**
+@api MCreditTop MCreditTop 	//积分排名前五 
+@param required string areaCode // 城市code
+@return MUserList
+*/
+
+/**
+@api MvedioList MvedioList 	//视频列表
+@return MvedioList
+*/
+
+/**
+@api MVedioDeatail MVedioDeatail 	//视频详情
+@param required string id // 视频id
+@return Mvedio
+*/
+
+/**
+@api CommentReplys CommentReplys //朋友圈 回复 和 赞 列表
+@param required string id //动态id
+@return MCommentList
+*/
+
+/**
+@api MTalkList MTalkList //朋友圈列表
+@param required string type  // 1全部 2个人
+@return MTalkList
+*/
+
+/**
+@api MAddComment MAddComment //添加朋友圈
+@param required string content // 内容
+@param required string img //图片
+@return MRet
+*/
+
+/**
+@api MAddReplay MAddReplay //添加评论
+@param required string id // 帖子id
+@param required string content // 内容
+@param required string targetId // 对象id
+@return MRet
+*/
+
+/**
+@api MAddUpvote MAddUpvote //添加赞
+@param required string id //帖子id
+@param required string userId 用户id
+@return MRet
+*/
+
+/**
+@api MEditComment MEditComment // 操作 评论 和 赞
+@param required string id // 评论或赞id
+@para type  // 1评论 2赞 
+@return MRet
+*/
+
+/**
+@api MGoodsList MGoodsList //积分商品列表  
+@return MGoodsList
+*/
+
+
+
+/**
+@api MGoodsDetail MGoodsDetail //积分商品详情  
+@param required string id  // 商品id
+@return MGoods
+*/
+
+
+/**
+@api MExchangeGoods MExchangeGoods//兑换商品   (需要登录)
+@param required string name // 姓名
+@param required string tel // 电话
+@param required string address // 地址
+@param required string info // 备注
+@param required string goodId // 商品id
+@param required string num // 数量
+@return MRet
+*/
+
+
+/**
+@api MExchangeLog MExchangeLog //兑换记录   (需要登录)
+@return MExchangeLogList
+*/
+
+/**
+@api MUsertGame MUsertGame 	//我的约战   (需要登录)  
+@param required string type //0:约战方 1:应战方
+@return MGameList
+*/
+
+/**
+@api MDelFriend MDelFriend	// 删除好友(需要登录)
+@param required string friendId  //好友的用户id 
+@return MRet
+*/
+
+/**
+@api MGamePlaceList MGamePlaceList //比赛地址列表
+@param required areaCode; //  地区
+@return MGameAddress
+*/

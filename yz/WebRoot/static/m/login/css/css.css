@@ -1,0 +1,204 @@
+﻿@charset "utf-8";
+@charset "gb2312";
+/* CSS Document */
+HTML {
+	_overflow-y: scroll
+}
+BODY {
+	TEXT-ALIGN: left;
+	max-width:640px;margin:0 auto;
+	FONT-FAMILY: Arial, Tahoma, "瀹嬩綋";
+	BACKGROUND: #f8f8f8;
+	COLOR: #272727;
+	FONT-SIZE: 12px;
+	padding: 0;
+}
+A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #272727
+}
+A:visited {
+	COLOR: #272727
+}
+A:hover {
+	COLOR: #272727
+}
+A:active {
+	COLOR: #272727
+}
+* {
+	PADDING-BOTTOM: 0px;
+	LINE-HEIGHT: 1.7em;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+H1 {
+	FONT-SIZE: 12px
+}
+H2 {
+	FONT-SIZE: 12px
+}
+H3 {
+	FONT-SIZE: 12px
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 12px
+}
+H6 {
+	FONT-SIZE: 12px
+}
+IMG {
+	BORDER-BOTTOM-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-TOP-STYLE: none;
+	BORDER-LEFT-STYLE: none;vertical-align: middle;
+}
+checkbox {
+	BORDER-RIGHT-WIDTH: 0px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+INPUT {
+	BORDER-RIGHT-WIDTH: 0px;
+	PADDING-LEFT: 2px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+TEXTAREA {
+	BORDER-RIGHT-WIDTH: 0px;
+	PADDING-LEFT: 2px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+.clear {
+	LINE-HEIGHT: 0;
+	CLEAR: both
+}
+ul,li,dl,dt,dd{padding:0;margin:0;list-style:none;}
+
+
+
+#iheader{height:1.5rem;background:#1dd1f1;padding:0.15rem 0;position:fixed;z-index:999;max-width:640px;left:0;right:0;margin:auto;}
+
+#iheader h2.iheader_title{
+color: #fffffe;
+font-size: 0.9rem;
+font-family: 'Microsoft Yahei';
+text-align: center;
+height:1.5rem;
+line-height: 1.5rem;
+font-weight: normal;
+
+}
+#iheader a.iheader_back {
+background: url(../images/bt_fanhui_n.png) no-repeat left center;
+padding: 0 0 0 1.05rem;
+position: absolute;
+left: 6px;
+line-height: 1.25rem;
+height: 1.25rem;
+color: #fffffe;
+font-size: 0.65rem;
+font-family: 'Microsoft Yahei';
+top: 0.275rem;
+background-size: 1rem 1.25rem;
+-webkit-background-size: 1rem 1.25rem;
+}
+
+.h42{height:1.8rem;clear:both;}
+#login_wrap{padding:0.5rem 0.25rem;}
+.login{padding:0 0.2rem;background:#fff;border:1px solid #cccccc;-webkit-border-radius: 0.15rem;
+-moz-border-radius: 0.15rem;
+border-radius: 0.15rem;}
+.login dl{position:relative;left:0;top:0;padding:0.375rem 0.125rem 0.375rem 0.125rem;}
+.login dl dt{position:absolute;left:0.125rem;top:0.375rem;height:1.25rem;width:1.25rem;}
+.login dl dd{height:1.25rem;line-height:1.25rem;margin:0 0.55rem 0 1.35rem;}
+.login dl input{border:none;background:none;line-height:0.75rem;height:1.25rem;width:99%;color:#a7a7a7;font-family:'Microsoft Yahei';font-size:0.75rem;font-weight:normal; line-height:1.25rem; outline:none}
+.login dl.yhm{border-bottom:1px solid #cccccc;background:url(../images/bt_xiala_n.png) no-repeat right center;background-size:20px;}
+.login dl.yhm dt{background:url(../images/ic_zhanghu.png) no-repeat center center;background-size: 1.075rem 1rem;-webkit-background-size: 1.075rem 1rem;}
+.login dl.mm{background:url(../images/bt_hide_n.png) no-repeat right center;background-size:24px;}
+.login dl.mm dt{background:url(../images/ic_mm.png) no-repeat center center;background-size:1.09rem 1.25rem;-webkit-background-size:1.09rem 1.25rem;}
+.login dl.mm dd{position:relative;left:0;top:0;}
+.login dl.mm dd i{position:absolute;right:0;top:0;width:1rem;height:1rem;background:url(../images/bt_scmm_n.png) no-repeat center center;
+background-size:cover;-webkit-background-size:cover; margin-top:0.125rem}
+.login dl.mm dd i a{display:block;text-indent: -9999px;line-height:0.75rem;height:100%}
+
+.login_btn{width:100%;height:1.75rem;background:#ff6c00;display:block;color:#fff;font-size:0.6rem;font-family: 'Microsoft Yahei';font-weight:normal;line-height:1.25rem;text-align:center;margin:0 auto;margin-top:0.5rem;-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;}
+.login_btn a{display:block;color:#fff;font-size:0.8rem;font-family: 'Microsoft Yahei';font-weight:normal;line-height:1.75rem;text-align:center; }
+
+.login_tip {line-height:0.75rem;padding:0.125rem 0;color:#888;font-size:0.65rem;font-family: 'Microsoft Yahei';font-weight:normal;}
+.login_tip a{line-height:0.75rem;color:#888;font-size:0.7rem;font-family: 'Microsoft Yahei';font-weight:normal;}
+.login_tip span{float:right;line-height:0.75rem;color:#888;font-size:0.65rem;font-family: 'Microsoft Yahei';font-weight:normal;}
+
+.login_mode_title{line-height:35px;padding:6px 0;margin-top:40px;border-bottom:1px solid #dcdcdc;color:#262626;font-size:20px;font-family: 'Microsoft Yahei';font-weight:normal;}
+
+.login_mode{padding:15px 0;}
+.login_mode dl{width:33.3%;display:block;float:left;}
+.login_mode dl dt{text-align:center;}
+.login_mode dl dt img{width:62%; vertical-align:middle;max-width:100px;}
+
+.login_mode dl dd{color:#555;font-size:17px;font-family: 'Microsoft Yahei';font-weight:normal;text-align:center;line-height:35px;padding:3px 0;}
+.login_mode dl dd a{color:#555;font-size:17px;font-family: 'Microsoft Yahei';font-weight:normal;text-align:center;line-height:35px;}
+
+
+
+
+
+
+
+
+
+
+#register_wrap{padding:0.375rem;background:#fff;-moz-box-shadow:0 3px 3px #ececec;              
+    -webkit-box-shadow:0 3px 3px #ececec;           
+    box-shadow:0 3px 3px #ececec;}
+.register{padding:0;}
+.register dl{position:relative;left:0;top:0;padding:0.25rem 0;}
+.register dl dt{position:absolute;left:0;top:0.25rem;height:1.3rem;width:1.2rem;}
+.register dl dd{height:1.3rem;line-height:1.3rem;margin:0 0 0 1.2rem;background:url(../images/bg_zc.png) no-repeat left bottom;padding:0 0 0.1rem 0.15rem;}
+.register dl input{border:none;background:none;line-height:1.2rem;height:1.2rem;width:99%;outline:none;
+color:#a7a7a7;font-family:'Microsoft Yahei';font-size: 0.75rem;font-weight:normal;}
+.register dl.register_phone dt{background:url(../images/ic_phone.png) no-repeat left center;background-size:1rem;}
+.register dl.register_yzm dt{background:url(../images/ic_yzm.png) no-repeat left center;background-size:1rem;}
+.register dl.register_pwd dt{background:url(../images/ic_mm.png) no-repeat left center;background-size:1rem;}
+.register dl.register_pwd2 dt{background:url(../images/ic_mm.png) no-repeat left center;background-size:1rem;}
+.register dl.register_yzm dd{position:relative;left:0;top:0;}
+.register dl.register_yzm dd a{color:#fff;height:1rem;line-height:1rem;width:2.625rem;position:absolute;display:block;background: #ff6c00;right:0;top:0;text-align:center;-webkit-border-radius: 4px;
+-moz-border-radius: 4px; padding-left:2px; padding-right:2px;
+border-radius: 4px;font-size:0.65rem;font-family: 'Microsoft Yahei';font-weight:normal;}
+.register dl.register_yzm dd a.yzm_send{background:#cccccc;}
+.register dl.register_phone dd{position:relative;left:0;top:0;}
+.register dl.register_phone dd i{position:absolute;right:0;top:0;width:1rem;height:1rem;background:url(../images/bt_scmm_n.png) no-repeat center center;background-size:1rem;}
+.register dl.register_phone dd i a{display:block;text-indent: -9999px;line-height:0.75rem;}
+.register_btn{width:100%;height: 1.75rem;background:#ff6c00;display:block;color:#fff;font-size:0.6rem;font-family: 'Microsoft Yahei';font-weight:normal;line-height:1.75rem;text-align:center;margin:0 auto;margin-top:0.375rem;margin-bottom:0.5rem;-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;}
+.register_btn a{display:block;color:#fff;font-size:0.8rem;font-family: 'Microsoft Yahei';font-weight:normal;line-height: 1.75rem;text-align:center; }
+
+
+
+.checkbox {
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+-webkit-appearance: none;
+border: 0;
+border-radius: 0;
+}
+
+.h_check{position:relative;height:1rem;width:0.9rem;display:block;float:left;margin:0.05rem 0.075rem 0 0;}
+.check_pa{width:1rem;height:1rem;position:absolute;top:0px;left:0px;}
+.h_checkbox{background:url(../images/bt_xuke_n.png) no-repeat left top;background-size:0.8rem;top:0.125rem;}
+.current_app{background:url(../images/bt_xuke_h.png) no-repeat left top;background-size:0.8rem ;top:0.125rem; }
+.register_tip{font-family:'Microsoft Yahei';color:#888;font-weight:normal;font-size:0.65rem;line-height:0.575rem;margin-bottom:0.25rem;}/* CSS Document */
+

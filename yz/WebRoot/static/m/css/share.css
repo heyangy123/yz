@@ -1,0 +1,114 @@
+@charset "gb2312";
+/* CSS Document */
+HTML {
+	_overflow-y: scroll
+}
+BODY {
+	TEXT-ALIGN: left;
+	MARGIN: 0px auto;
+	FONT-FAMILY: Arial, Tahoma, "ËÎÌו";
+	BACKGROUND: #fff;
+	COLOR: #272727;
+	FONT-SIZE: 12px;
+	padding: 0;
+}
+A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #272727
+}
+A:visited {
+	COLOR: #272727
+}
+A:hover {
+	COLOR: #272727
+}
+A:active {
+	COLOR: #272727
+}
+
+H1 {
+	FONT-SIZE: 12px
+}
+H2 {
+	FONT-SIZE: 12px
+}
+H3 {
+	FONT-SIZE: 12px
+}
+H4 {
+	FONT-SIZE: 12px
+}
+H5 {
+	FONT-SIZE: 12px
+}
+H6 {
+	FONT-SIZE: 12px
+}
+IMG {
+	BORDER-BOTTOM-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-TOP-STYLE: none;
+	BORDER-LEFT-STYLE: none;vertical-align: middle;
+}
+checkbox {
+	BORDER-RIGHT-WIDTH: 0px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+INPUT {
+	BORDER-RIGHT-WIDTH: 0px;
+	PADDING-LEFT: 2px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+TEXTAREA {
+	BORDER-RIGHT-WIDTH: 0px;
+	PADDING-LEFT: 2px;
+	BORDER-TOP-WIDTH: 0px;
+	BORDER-BOTTOM-WIDTH: 0px;
+	BORDER-LEFT-WIDTH: 0px
+}
+.clear {
+	LINE-HEIGHT: 0;
+	CLEAR: both
+}
+ul,li,dl,dt,dd{padding:0;margin:0;list-style:none;}
+
+.w640{min-width: 320px;
+max-width: 640px;
+width: 100%;
+overflow: hidden;margin: 0px auto;}
+
+
+.darpBox{min-width: 320px;
+max-width: 640px;height:100%;position:absolute;z-index:10000;left:0;right:0;top:0;margin:auto;background:rgba(0,0,0,0.6);}
+.darpBox ul{float:left;width:100%;height:100%;position:fixed;z-index:10000;}
+
+.darpBox dl{width:14.75rem;height:7.25rem;position:fixed;z-index:10;left:50%;margin-left:-7.375rem;top:50%;margin-top:-3.75rem;overflow:hidden;z-index:10001;}
+.darpBox dt{width:100%;font-size:0.65rem;color:#000;line-height:1.5rem;height:1.5rem;border-bottom:1px solid #dcdcdc;background:#fff;-webkit-border-radius:0.25rem 0.25rem 0px 0px;-moz-border-radius:0.25rem 0.25rem 0px 0px;border-radius:0.25rem 0.25rem 0px 0px;text-align:center;position:relative;left:0;top:0;color:#444444;font-weight:normal;font-family:'Microsoft Yahei';}
+.darpBox dt a.close{display:block;position:absolute;right:0.25rem;top:0.25rem;width:1rem;height:1rem;background:url(../images/share-close.png) no-repeat 0 0;background-size:1rem 1rem;-webkit-background-size:1rem 1rem;}
+.darpBox dd{width:100%;height:4.25rem;padding:0.875rem 0px 0.125rem;background:#fff;-webkit-border-radius:0px 0px 0.25rem 0.25rem;-moz-border-radius:0px 0px 0.25rem 0.25rem;border-radius:0px 0px 0.25rem 0.25rem;}
+.darpBox dd span{float:left;width:25%;margin:0.3rem 0px;cursor:pointer;text-align:center;font-size:0.7rem;color:#444444;line-height:1.5rem;font-family:'Microsoft Yahei';}
+.darpBox dd span i{float:left;width:100%;height:1.75rem;}
+.darpBox dd i.s1{background:url(../images/cion1.png) no-repeat center center;background-size: 1.75rem 1.75rem;-webkit-background-size: 1.75rem 1.75rem;}
+.darpBox dd i.s2{background:url(../images/cion2.png) no-repeat center center;background-size: 1.75rem 1.75rem;-webkit-background-size: 1.75rem 1.75rem;}
+.darpBox dd i.s3{background:url(../images/cion3.png) no-repeat center center;background-size: 1.75rem 1.75rem;-webkit-background-size: 1.75rem 1.75rem;}
+.darpBox dd i.s4{background:url(../images/cion4.png) no-repeat center center;background-size: 1.75rem 1.75rem;-webkit-background-size: 1.75rem 1.75rem;}
+
+
+
+.home{width:2.1rem;height:2.1rem;position:fixed;bottom:3.375rem;right:0.625rem;z-index:9999;background:url(../images/home.png) no-repeat 0 0;
+background-size:2.1rem 2.1rem;-webkit-background-size:2.1rem 2.1rem;}
+
+
+.download_box{  z-index: 999999;position:fixed;left:0;right:0;width:640px;margin:auto;height:100px;background:url(../images/down_bj.png) repeat 0 0;bottom:0;}
+
+.download_box dl{padding:10px 20px;position:relative;}
+.download_box dl dt{float:left;margin:0 0 0 6px;line-height:80px;padding:0 0 0 95px;background:url(../images/icon.png) no-repeat left center;font-size:24px;color:#c5c4c4;font-family:'Microsoft Yahei';}
+.download_box dl dd{float:right;line-height:50px;margin:15px 35px 0 0; width:133px;line-height:50px;font-size:24px;color:#f6651c;font-family:'Microsoft Yahei';background:#fff;}
+.download_box dl dd a{display:block;line-height:50px;line-height:50px;font-size:24px;color:#f6651c;font-family:'Microsoft Yahei';background:#fff;text-align:center;}
+.download_box dl .down_close{position:absolute;right:0;top:0;width:39px;height:39px;background:url(../images/close1.png) no-repeat 0 0;background-size:100%;z-index:1000;}

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build" name="build">
+
+	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+	
+	<property name="deploy.name" value="yz" />
+	<property name="tomcat.home" value="C:\apache-tomcat-7.0.67\lib" />
+
+	<property name="base.home" value="." />
+	<property name="war.home" value="../deploy" />
+	<property name="war.temp" value="${war.home}/_${deploy.name}.war" />
+	<property name="base.root" value="${base.home}/WebRoot" />
+
+	<property name="js.path" value="base/js/*.js,base/js/*/*.js" />
+	<property name="css.path" value="base/css/*.css" />
+
+	<target name="build">
+
+		<echo>JAVA虚拟机版本：${java.version}</echo>
+
+		<tstamp>
+			<format property="build.time" pattern="yyyyMMddhhmmss" />
+		</tstamp>
+
+		<echo>版本时间：${build.time}</echo>
+
+		<delete dir="${war.temp}" />
+
+		<delete file="${war.home}/${deploy.name}.war" />
+
+		<mkdir dir="${war.temp}" />
+
+		<copy todir="${war.temp}/">
+			<fileset dir="${base.root}">
+				<include name="**/*.*" />
+				<exclude name="${js.path}" />
+			</fileset>
+		</copy>
+
+		<!-- 压缩js -->
+		<antcall target="compress-js" />
+		<!-- 压缩css -->
+		<antcall target="compress-css" />
+		<!-- 编译java -->
+		<antcall target="build_war" />
+
+		<delete dir="${war.temp}" />
+	</target>
+
+	<target name="build_war">
+		<delete dir="${war.temp}/WEB-INF/classes" />
+		<mkdir dir="${war.temp}/WEB-INF/classes" />
+		<copy todir="${war.temp}/WEB-INF/classes" failonerror="true">
+			<fileset dir="${base.home}/src/">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+			</fileset>
+			<fileset dir="${base.home}/config/">
+				<exclude name="**/*.deploy" />
+			</fileset>
+		</copy>
+		<!--includeAntRuntime="false" -->
+		<javac destdir="${war.temp}/WEB-INF/classes" includeAntRuntime="false" source="1.6" target="1.6" fork="true" memoryMaximumSize="512m" debug="true" encoding="UTF-8">
+			<src path="${base.home}/src" />
+			<classpath>
+				<fileset dir="${base.root}/WEB-INF/lib" />
+				<fileset dir="${tomcat.home}" />
+			</classpath>
+		</javac>
+		
+		<!--  模板配置
+		<copy tofile="${war.temp}/WEB-INF/classes/config/jdbc.properties" file="template/${deploy.name}/jdbc.properties" overwrite="true" failonerror="false" />
+		<copy tofile="${war.temp}/WEB-INF/classes/project.properties" file="template/${deploy.name}/project.properties" overwrite="true" failonerror="false" />
+		<copy tofile="${war.temp}/WEB-INF/classes/com/shopcart/mobile/pay/pay.properties" file="template/${deploy.name}/pay.properties" overwrite="true" failonerror="false" />
+		<copy tofile="${war.temp}/WEB-INF/classes/com/shopcart/mobile/pay/acp_sdk.properties" file="template/${deploy.name}/acp_sdk.properties" overwrite="true" failonerror="false" />
+		-->
+		<war destfile="${war.home}/${deploy.name}.war" webxml="${war.temp}/WEB-INF/web.xml">
+			<fileset dir="${war.temp}">
+			</fileset>
+			<manifest>
+				<attribute name="ITEM-Version" value="item.${build.time}" />
+			</manifest>
+		</war>
+
+	</target>
+
+	<target name="build_ear">
+		<ear destfile="${war.home}/${deploy.name}.ear" appxml="${war.temp}/META-INF/application.xml">
+			<fileset dir="${war.home}">
+				<include name="${deploy.name}.war" />
+			</fileset>
+		</ear>
+	</target>
+
+	<!-- 压缩混淆JS -->
+	<target name="compress-js">
+		<echo>compress js start~</echo>
+		<apply executable="java" parallel="false" verbose="true" failonerror="true" dest="${war.temp}">
+			<fileset dir="${base.root}" includes="${js.path}" />
+			<arg line="-jar" />
+			<arg path="${base.root}/WEB-INF/lib/yuicompressor-2.4.2.jar" />
+			<arg line="--charset utf-8" />
+			<srcfile />
+			<arg line="-o" />
+			<mapper type="glob" from="*.js" to="*-mini.js" />
+			<targetfile />
+		</apply>
+		<move todir="${war.temp}" includeemptydirs="false">
+			<fileset dir="${war.temp}" includes="${js.path}">
+			</fileset>
+			<mapper type="glob" from="*-mini.js" to="*.js" />
+		</move>
+		<echo>compress js end~</echo>
+	</target>
+
+	<!-- 压缩混淆CSS -->
+	<target name="compress-css">
+		<echo>compress css start~</echo>
+		<apply executable="java" parallel="false" failonerror="true" dest="${war.temp}" append="false" force="true">
+			<fileset dir="${base.root}" includes="${css.path}" />
+			<arg line="-jar" />
+			<arg path="${base.root}/WEB-INF/lib/yuicompressor-2.4.2.jar" />
+			<arg line="--charset utf-8" />
+			<srcfile />
+			<arg line="-o" />
+        	<mapper type="glob" from="*.css" to="*.css" />
+        	<targetfile />
+		</apply>
+		<echo>compress css end~</echo>
+	</target>
+
+</project>

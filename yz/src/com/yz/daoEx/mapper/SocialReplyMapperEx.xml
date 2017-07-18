@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.daoEx.SocialReplyMapperEx" >
+	<resultMap id="BaseResultMap" type="com.yz.daoEx.model.SocialReplyEx" extends="com.yz.dao.SocialReplyMapper.BaseResultMap">
+	</resultMap>
+	
+	
+	<select id="selectAppList" parameterType="Map" resultMap="BaseResultMap">
+		SELECT
+			sr.*,u1.img,u2.name as targetName,u1.name as criticName
+		FROM
+			f_social_reply sr
+		LEFT JOIN f_user u1 ON u1.id = sr.critic
+		LEFT JOIN f_user u2 ON u2.id = sr.target
+		where sr.social_id = #{id} 
+		order by sr.create_time
+		
+		
+			
+	</select>
+	
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.daoEx.GameMapperEx" >
+	<resultMap id="BaseResultMap" type="com.yz.daoEx.model.GameEx" extends="com.yz.dao.GameMapper.BaseResultMap">
+	</resultMap>
+	
+	
+	<select id="selectList" parameterType="map" resultMap="BaseResultMap">
+		SELECT
+			g.*, gp.place AS place,
+			u. NAME AS name
+		FROM
+			f_game g,
+			f_game_place gp,
+			f_game_player gpl,
+			f_user u
+		WHERE
+			g.game_place_id = gp.id
+		AND g.id = gpl.game_id
+		AND u.id = gpl.user_id
+		AND gpl.is_captain = '1'
+		ORDER BY
+			g.create_time DESC
+	</select>
+	
+	<select id="selectGameDetail" parameterType="map" resultMap="BaseResultMap">
+		SELECT
+			g.create_time,
+			gplace.address AS address,
+			gplace.place AS place,
+			gt. NAME AS name,
+			gt.number AS number,
+			gt.amount AS amount,
+			g.theme,
+			g.remark
+		FROM
+			f_game g
+		LEFT JOIN f_game_place gplace ON g.game_place_id = gplace.id
+		LEFT JOIN f_game_type gt ON g.game_type_id = gt.id
+		
+	<if test="gameId!=null and gameId !='' ">
+		where g.id = #{gameId}
+	</if>
+		
+	</select>
+	
+	<select id="selectAppList"  parameterType="map"  resultMap="BaseResultMap">
+		SELECT
+			g.theme,
+			g.id,
+			g.play_time,
+			g.state,
+			gp.img as img,
+			g.play_time,
+			u.name as nickName,
+			gp.address as address
+			
+		FROM
+			f_game g
+		LEFT JOIN f_user u ON g.user_id = u.id
+		LEFT JOIN f_game_type gt ON g.game_type_id = gt.id
+		LEFT JOIN f_game_place gp ON g.game_place_id = gp.id
+		
+		where 1=1
+		
+		and (g.state  = 1 or g.state = 3)
+		
+		<if test="areaCode !=null and areaCode != ''">
+			and gp.city_code = #{areaCode}
+		</if>
+		
+		<if test="state !=null and state != ''">
+			and g.state = #{state}
+		</if>
+		
+		<if test="type !=null and type != ''">
+			and gt.id = #{type}
+		</if>
+		
+		<if test="beginTime !=null and beginTime != '' and endTime !=null and endTime != ''">
+			and g.play_time between #{beginTime} and #{endTime}
+		</if>
+		
+		<if test="name !=null and name != ''">
+			and g.theme like '%${name}%'
+			or  gp.address LIKE '%${name}%'
+			or  gp.place LIKE '%${name}%'
+		</if>
+		
+		order by g.create_time desc
+
+	</select>
+	
+	<select id="selectShare"  parameterType="map"  resultMap="BaseResultMap">
+		SELECT
+			g.*,gp.place as place
+		FROM
+			f_game g
+		LEFT JOIN f_game_place gp ON g.game_place_id = gp.id
+		
+		where 1=1 
+		<if test="id!=null and id!=''">
+			and g.id = #{id}
+		</if>		
+	</select>
+	
+	<select id="selectAppMyGameList"  parameterType="map"  resultMap="BaseResultMap">
+		SELECT
+			g.theme,
+			g.id,
+			g.play_time,
+			g.state,
+			gp.img as img,
+			g.play_time,
+			u.name as nickName,
+			gp.address as address
+			
+		FROM
+			f_game g
+		LEFT JOIN f_user u ON g.user_id = u.id
+		LEFT JOIN f_game_type gt ON g.game_type_id = gt.id
+		LEFT JOIN f_game_place gp ON g.game_place_id = gp.i
+		LEFT JOIN f_game_player gpl ON g.id = gpl.game_id
+		
+		where 1=1
+		
+		and (g.state  = 1 or g.state = 3)
+		
+		<if test="userId !=null and userId != ''">
+			and gpl.user_id = #{userId}
+-- 			and gpl.is_captain = '1'
+		</if>
+		<if test="type !=null and type != ''">
+			and gpl.type = #{type}
+		</if>
+		
+		order by g.create_time desc
+
+	</select>
+	
+	
+</mapper>

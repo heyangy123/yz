@@ -1,0 +1,64 @@
+package &basePackageName&.&packageName&.action;
+
+import java.util.List;
+import com.base.dialect.PaginationSupport;
+import com.base.dao.model.Ret;
+import com.base.dao.model.Grid;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.apache.commons.lang.StringUtils;
+import com.base.util.JSONUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.base.action.CoreController;
+import &basePackageName&.&packageName&.dao.model.&className&;
+import &basePackageName&.&packageName&.dao.model.&className&Example;
+import &basePackageName&.&packageName&.service.&className&Service;
+
+@RequestMapping("&className.toFirstLowerCase&")
+@Controller
+public class &className&Controller extends CoreController{
+
+    @Autowired
+    private &className&Service &className.toFirstLowerCase&Service;
+    
+    @RequestMapping("/list")
+	@ResponseBody 
+    public String list(Integer page, Integer rows){
+    	PaginationSupport.byPage(page, rows);
+    	&className&Example example = new &className&Example();
+    	
+    	List<&className&> list = &className.toFirstLowerCase&Service.selectByExample(example);
+      	return JSONUtils.serialize(new Grid(PaginationSupport.getContext().getTotalCount(), list));
+    }
+    
+    @RequestMapping("/save")
+	@ResponseBody 
+    public String save(&className& &className.toFirstLowerCase&){
+    	if (StringUtils.isBlank(&className.toFirstLowerCase&.getId())){
+    		&className.toFirstLowerCase&Service.insert(&className.toFirstLowerCase&);
+    	}else{
+    		&className.toFirstLowerCase&Service.updateByPrimaryKeySelective(&className.toFirstLowerCase&);
+    	}
+       	return JSONUtils.serialize(new Ret(0));
+    }
+    
+    @RequestMapping("/findById")
+	@ResponseBody 
+    public String find(String id){
+    	&className& &className.toFirstLowerCase& = &className.toFirstLowerCase&Service.selectByPrimaryKey(id);
+       	return JSONUtils.serialize(&className.toFirstLowerCase&);
+    }
+    
+    @RequestMapping("/del")
+	@ResponseBody 
+    public String del(String id){
+    	String[] ids = id.split(",");
+    	for (String str : ids){
+    		&className.toFirstLowerCase&Service.deleteByPrimaryKey(str);
+    	}
+       	return JSONUtils.serialize(new Ret(0));
+    }
+
+
+}

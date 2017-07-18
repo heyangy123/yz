@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.item.daoEx.UserMapperEx" >
+	<resultMap id="BaseResultMap" type="com.item.daoEx.model.UserEx" extends="com.item.dao.UserMapper.BaseResultMap">
+	
+	</resultMap>
+	
+	<select id="selectList" resultMap="BaseResultMap" parameterType="java.util.HashMap" >
+    select
+    	u.*
+    from f_user u 
+    where 1=1
+    <if test="key != null and key !=''">
+    	 and (u.name like '%${key}%' or u.account like '%${key}%')
+    </if>
+    order by u.create_time desc
+  </select>
+ 
+ 	<select id="selectPalyer" parameterType="map" resultMap="BaseResultMap" >
+ 		SELECT
+			u.name , u.img , gu.type as type,gu.is_captain as isCaptain ,u.id
+		FROM
+			(
+								SELECT
+					gp.*
+				FROM
+					f_game_player gp,
+					f_game_detail gd
+				WHERE
+					gd.game_id = gp.game_id
+				AND gp.game_id = #{gameId}
+				AND gp.type = '0'
+				AND gd.game_id = #{gameId}
+				AND gd.pay_state = '1'
+				AND gd.type = '0'
+				OR (
+					gd.game_id = gp.game_id
+					AND gp.game_id = #{gameId}
+					AND gp.type = '1'
+					AND gd.game_id = #{gameId}
+					AND gd.pay_state = '1'
+					AND gd.type = '1'
+				)
+			) gu
+		LEFT JOIN f_user u ON gu.user_id = u.id
+ 		
+ 		<if test="gameId!=null and gameId != '' ">
+ 			where gu.game_id = #{gameId}
+ 		</if>
+ 		
+ 	</select>
+ 	
+ 	<select id="selectFriend" parameterType="Map" resultMap="BaseResultMap">
+ 		SELECT
+			u.name,u.img,u.gender,u.id
+		FROM
+			f_user_friend uf
+		LEFT JOIN f_user u ON uf.friend = u.id
+		
+		<if test="userId !=null and userId != '' ">
+			where uf.user_id = #{userId}
+		</if>
+		
+		order by uf.create_time desc
+ 	</select>
+ 	
+ 	<select id="selectUserDetail" parameterType="Map" resultMap="BaseResultMap">
+ 		SELECT
+			u.*, ur. NAME AS position
+		FROM
+			f_user u
+		LEFT JOIN f_user_role ur ON u.role_id = ur.id
+		
+		<if test="userId!=null and userId != '' ">
+ 			where u.id = #{userId}
+ 		</if>
+ 		
+ 	</select>
+ 	
+ 	<update id="updateScorePlus" parameterType="com.item.dao.model.User">
+ 		update f_user 
+ 		set 
+ 		total_score = total_score + #{score}
+ 		,score = score + #{score}
+ 		<if test="goal != null and goal != '' ">
+ 			,goal = goal + #{goal}
+ 		</if>
+ 		<if test="assists != null and assists != '' ">
+ 			,assists = assists + #{assists}
+ 		</if>
+ 		<if test="rebounds != null and rebounds != '' ">
+ 			,rebounds = rebounds + #{rebounds}
+ 		</if>
+ 		<if test="steals != null and steals != '' ">
+ 			,steals = steals + #{steals}
+ 		</if>
+ 		<if test="block != null and block != '' ">
+ 			,block = block + #{block}
+ 		</if>
+ 		where id = #{id}
+ 	</update>
+ 
+</mapper>

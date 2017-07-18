@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+.txt{position:relative;font-size:12px;}
+.txt input{vertical-align:middle;}
+.txt .txt-tip{ font-size:16px;color:#999;position:absolute;left:0px;top:10px;height:26px;line-height:26px;font-family:"Microsoft Yahei",sans-serif; display:block;}
+.loginwrap .txt{ width:373px; float:left;}
+.registerwrap .form .txt-tip{ left:20px;}
